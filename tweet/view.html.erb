@@ -38,10 +38,18 @@
      <h2 >Hello <span class="text-info">username</span>, here are your daily fresh tweets.<br><br></h2>
       <img class="media-object" src="http://geolim4.com/download/file.php?avatar=g2_1358118115.png" 
           alt="Media Object">
-    <p >Your nickname : <span class="text-info">User nickname</span> </p>
-    <p >Your email : <span class="text-info">User email</span> </p>
-
-     <p>Your Description : <br><span class="text-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim. Pellentesque sollicitudin turpis quis leo luctus elementum. Praesent vel lorem a libero venenatis ultrices. Sed a sem risus. Nullam commodo gravida arcu. Proin diam dui, dapibus in massa at, iaculis mattis libero. Quisque cursus ornare nisl. In imperdiet, nunc eu sagittis feugiat, lectus ipsum tincidunt sapien, nec condimentum diam ante eget mauris. Donec non feugiat metus.</span></p>
+ <div class="panel">
+      <div class="panel-body">
+        <p class="text-info">User nickname</span> </p>
+        <p class="text-info">User email</span> </p>
+      </div>
+    </div>
+     <div class="panel">
+      <div id="showmoredesc"class="panel-body collapse">
+        <p>Your Description : <br><span class="text-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim. Pellentesque sollicitudin turpis quis leo luctus elementum. Praesent vel lorem a libero venenatis ultrices. Sed a sem risus. Nullam commodo gravida arcu. Proin diam dui, dapibus in massa at, iaculis mattis libero. Quisque cursus ornare nisl. In imperdiet, nunc eu sagittis feugiat, lectus ipsum tincidunt sapien, nec condimentum diam ante eget mauris. Donec non feugiat metus.</span></p>
+    </div>
+    <button data-toggle="collapse" data-parent="#accordion" href="#showmoredesc"  aria-controls="collapseOne" type="button" class="btn btn-primary btn-sm">see description</button>
+    </div>
   </div>
    
 
@@ -71,6 +79,7 @@
                     <input type="text-area" class="form-control" id="">
                   </div>
                   
+                    <input type="submit" class="" id="">                              
         </form>
         <br><br>
         </div>
@@ -81,10 +90,9 @@
                 alt="Media Object">
              </a>
              <div class="media-body">
-                <p>Author : <span class="text-info">Lucas</span> | Date : <span class="text-info">03/12/14</span> </p>
+                <p>Author : <a href="">Lucas</a></span> | Date : <span class="text-info">03/12/14</span> </p>
                 <br>
-
-                <p>message : <blockquote class="text-info"><span class="text-warning">"</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim.<span class="text-warning">"</span></blockquote> </p>
+                <blockquote class="text-info"><span class="text-warning">"</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim.<span class="text-warning">"</span></blockquote> 
                 <br>
                 <div class="btn-group btn-group-xs" role="group" aria-label="">
                   <button type="button" class="btn btn-default">tag1</button>
@@ -100,8 +108,51 @@
                   <button type="button" class="btn btn-default">tag11</button>
                   <button type="button" class="btn btn-default">tag12</button>
               </div>
-             </div>
+                   <div class="panel panel-body media">
+               <a class="pull-left" data-toggle="collapse" data-parent="#accordion" href="#writecomment"  aria-controls="collapseOne">
+                  <img src="http://icons.iconarchive.com/icons/dryicons/simplistica/16/comment-icon.png">
+               </a>
+               <div class="media-body">
+                <span class="badge">2</span>
+                <br><br>
+                <div class="comments collapse" id="writecomment">
+                  <form role="form"  class="well">
+                      <div class="form-group">
+                        <label>write a new comment</label>
+                        <input type="text-area"  class="form-control" id="user-message">
+                      </div>
+                        <input type="submit" class="btn btn-primary btn-sm" id="" value="submit"> 
+                    </form>
+
+                    <div class="panel panel-body media">
+                       <a class="pull-left" href="#">
+                          <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c7.0.48.48/p48x48/10801565_10150485931894969_3957759039812526672_n.jpg?oh=9c415278e21581d170d70fbb440e7b66&oe=5502C7F9&__gda__=1423035699_eb962aaaa4cbea3052be22b04c2e7ef3" 
+                          alt="Media Object">
+                       </a>
+                      <div class="media-body">
+                        <p>Author : <a href="">Lucas</a></span> | Date : <span class="text-info">03/12/14</span> </p>
+                        <blockquote class="text-info"><span class="text-warning">"</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim.<span class="text-warning">"</span></blockquote> 
+                        <br>
+                    </div>
+                  </div>
+                  <div class="panel panel-body media">
+                       <a class="pull-left" href="#">
+                          <img class="media-object" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c7.0.48.48/p48x48/10801565_10150485931894969_3957759039812526672_n.jpg?oh=9c415278e21581d170d70fbb440e7b66&oe=5502C7F9&__gda__=1423035699_eb962aaaa4cbea3052be22b04c2e7ef3" 
+                          alt="Media Object">
+                       </a>
+                      <div class="media-body">
+                        <p>Author : <a href="">Lucas</a></span> | Date : <span class="text-info">03/12/14</span> </p>
+                        <blockquote class="text-info"><span class="text-warning">"</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac ligula laoreet, sodales tortor at, fermentum turpis. Nulla semper dictum dignissim.<span class="text-warning">"</span></blockquote>
+                        <br>
+                    </div>
+                  </div>
+                </div>
+
+               </div>
+            </div>
+            </div>
           </div>
+      </div>
 
       </div>
     </div>
