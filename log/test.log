@@ -1,0 +1,269 @@
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "microposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_microposts_on_user_id_and_created_at" ON "microposts" ("user_id", "created_at")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_microposts_on_user_id_and_created_at' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_microposts_on_user_id_and_created_at' AND type='index'
+
+  [1m[36m (0.9ms)[0m  [1mCREATE  INDEX "index_microposts_on_user_id" ON "microposts" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "password_digest" varchar, "remember_digest" varchar, "admin" boolean DEFAULT 'f', "activation_digest" varchar, "activated" boolean DEFAULT 'f', "activated_at" datetime, "reset_digest" varchar, "reset_sent_at" datetime) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141209010822')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141203195011')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141203222040')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141203223000')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141208003409')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141208073424')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20141208181634')[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20141208210414')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "microposts"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "microposts" ("content", "user_id", "created_at", "updated_at", "id") VALUES ('MyText', NULL, '2014-12-09 01:11:02', '2014-12-09 01:11:02', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "microposts" ("content", "user_id", "created_at", "updated_at", "id") VALUES ('MyText', NULL, '2014-12-09 01:11:02', '2014-12-09 01:11:02', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "admin", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Michael Example', 'michael@example.com', '$2a$04$ZPlXE5BPxS9I1Gpr9yJl9.byINJ0zZuBvtn8GvmM6I.m4W8CFvzCG', 't', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 149617800)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Sterling Archer', 'duchess@example.gov', '$2a$04$1IN86x.oEoEHTjlAeBEuFew7h9.7ECF8h47brd5fpPavvGdorwmGy', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 512127716)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Lana Kane', 'hands@example.gov', '$2a$04$jSFhnJ95PnHVKDctXA2lmeQcDD14wtZizeCgiU/4B1XzOH1LwmkPS', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 409608538)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Mallory Archer', 'boss@example.gov', '$2a$04$RFlvqKAaG/HPArunvIhsqOxwH28oKKJ68P78zQvqu4Mhi5naTKJMy', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 785162917)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 0', 'user-0@example.com', '$2a$04$38yUuegrD1wFNJL960ZSGuI7ICATTG5fcweKxSt400C1glvEwuuFO', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 338193910)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 1', 'user-1@example.com', '$2a$04$v0hzUge5FqW/osEr93XHre8L8G5yJxZgG9CIUK.e/pP6BeqmjYI6e', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 590306657)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 2', 'user-2@example.com', '$2a$04$dS8OsC6MpBGWcBbH2VEMqeOAo1e0ZGO0YiXsykFfzGQBmkkunbbCq', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 975572189)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 3', 'user-3@example.com', '$2a$04$2ka9eSKSPvThg8exoMcGauaJ4JtfO4eER/z5HWpMN98Ul38nKUfea', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 220281934)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 4', 'user-4@example.com', '$2a$04$rj3mjgRn6k8hLFKAa63RDeZk4Y8jfS4WFdpa5hKwA96htIrg504Iq', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 323332591)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 5', 'user-5@example.com', '$2a$04$i9qnK1wq1s0YlQcd4Lf4iu2iKr.6KtER6zBzDAo9XuQwKBVfDS3Gm', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 608344442)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 6', 'user-6@example.com', '$2a$04$fZEPTMLwwwCtUS/RphnvHee7OTjMZVQN7gbJmkbyOncF9uWNRblTu', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 1028376774)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 7', 'user-7@example.com', '$2a$04$7cbzCi2kTEPMcSyaSCAEA.Vfki/b38jn5rcl.YgrhNOMBDjK1pXFu', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 172816471)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 8', 'user-8@example.com', '$2a$04$Zc0vtMBaR0dxcmgxhS6LqeTD4uWvldgS1bw0sNzrflXBUIib/vlEO', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 452191684)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 9', 'user-9@example.com', '$2a$04$Y0Cvg/UzEC3jGGGBPgPGH.1l8SFQUeV12V1tHbs0sQ8KPk43GkVRK', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 771020115)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 10', 'user-10@example.com', '$2a$04$DYZccrkiy9op2.VXMFLdYOl4n0pDBGKBY1ZKFv7IbQC99uF0SQcge', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 956993830)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 11', 'user-11@example.com', '$2a$04$Yj7ELQAEMavwlCn37QYO9eEUyueVTIC2WYTPEZbvlXqiNBVXq9bJy', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 235774389)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 12', 'user-12@example.com', '$2a$04$47FlFOCxLN3UdsGp42tAZ.UQ.JbdL./W2tn4kKJ7cc88v.TTN3zJG', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 386199561)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 13', 'user-13@example.com', '$2a$04$RcKo9KwrsLVOOug.jXgHqOroWmOjcmF3MqRMdh.sMZ3wKtIJtfjL2', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 537116830)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 14', 'user-14@example.com', '$2a$04$Mu.jdI3pRixiCUm6wHCHqelp5zJvV4xvmtHg.rG7ksvCQSdVl/NOC', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 1046959423)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 15', 'user-15@example.com', '$2a$04$wvjVH8Pu83c5DKZeoIpA7uzJWpj3zff5Ln7nV0iDH1h7LnQP9K2vm', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 157312430)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 16', 'user-16@example.com', '$2a$04$kKLhNQRZWuD6O03bzW/xAOerhoQyqCDGEbEOuuPSuPblCYfyKmf3i', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 275330066)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 17', 'user-17@example.com', '$2a$04$s1STuCCoIHMlVOHLHVkwtOc9z6xU905jPimXz52WJt3VI/s7nebhC', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 661521543)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 18', 'user-18@example.com', '$2a$04$Mt5lBrHmX/GEjreKjiCgl.GVc0lbW8LDL8wDFbVKyDzcmqLCVGtWS', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 936450328)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 19', 'user-19@example.com', '$2a$04$R7d8AzU2ffG6jtUdoncZXuczoFSXToIgtzjE75.iDJZwFElC7hoOq', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 14035331)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 20', 'user-20@example.com', '$2a$04$tosUO4W/s7atkcTcINXtS.qcelHTbgvo1iLpnQr/b5.ZY3pcb38Jq', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 304595689)[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 21', 'user-21@example.com', '$2a$04$0R3UTJkp7r1NV5gF5p/oQeErhzFaEcEn..a2dtrBD4Iyi7ePUKEYm', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 622916212)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 22', 'user-22@example.com', '$2a$04$dQxGzC1zzi2o0Q8l9APAZujSuBKXNAPx9xeb3smvFXrZFw/kd5ikq', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 1009361868)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 23', 'user-23@example.com', '$2a$04$vMY8pbk8PRjXD6yBSIPGduvV3GmLPGMdKQT4eYIFxqStrQEL4YNPO', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 187601757)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 24', 'user-24@example.com', '$2a$04$I9ZbBK0HCIGHlx3xnTmB9eeUXXpc2qdqAM6e3KLuPbK.WvfyJRkqa', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 357172992)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 25', 'user-25@example.com', '$2a$04$G55S5EYbryLeS9AK0U/4wOHZ/byYGQJrw8VBAPOYl4U0L.nXQrwjC', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 575485547)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 26', 'user-26@example.com', '$2a$04$VCxz2/Zr7L4a.kFbGxBF0eMbbNz28mdAJXfqXwTwf4qkfOSeRCIy2', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 994338771)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 27', 'user-27@example.com', '$2a$04$g3LpfH3Akn0m1Pl.jVhxvOjWvwhxiJq1Y8rMIYIX6emRddleS1iCG', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 205739844)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 28', 'user-28@example.com', '$2a$04$yqaUkKTy0KoR1jhwRQ.Jz.CUwB3xA4AhahS/MUTIrdVhGkjzkJ4J6', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 486296279)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 29', 'user-29@example.com', '$2a$04$5Ddl67YLOmRwYPuClT0xR.PckMjncNZsmMe2HU9NihoBCU1E.XPAG', 't', '2014-12-09 01:11:02.000000', '2014-12-09 01:11:02', '2014-12-09 01:11:02', 737901126)
+  [1m[36m (1.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------------------------------------------
+UserTest: test_authenticated?_should_return_false_for_a_user_with_nil_digest
+----------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------------------
+UserTest: test_password_should_have_a_minimum_length
+----------------------------------------------------
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-------------------------------------------------------------
+UserTest: test_email_validation_should_accept_valid_addresses
+-------------------------------------------------------------
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('USER@foo.COM') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('A_US-ER@foo.bar.org') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('first.last@foo.jp') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('alice+bob@baz.cn') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------------
+UserTest: test_email_addresses_should_be_saved_as_lower-case
+------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('Foo@ExAMPle.CoM') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)  [["name", "Example User"], ["email", "foo@example.com"], ["password_digest", "$2a$04$mTm90Dz/EfJwDVI7RpACHOw2AV4zYFd/kNiCDxUC/gcoxjxL6mndC"], ["created_at", "2014-12-09 01:11:02.983465"], ["updated_at", "2014-12-09 01:11:02.983465"], ["activation_digest", "$2a$04$gr/dtl3.Bkb5xxy8Lynt.ecyiHYHzHtsuzOulYjdD/m3iw9Rj/6Ta"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1046959424]]
+  [1m[36m (2.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------
+UserTest: test_email_addresses_should_be_unique
+-----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["email", "user@example.com"], ["password_digest", "$2a$04$ijm5PTYSfhmpuX.beO5nUOS9Kt0OVoqW4psUP/a78MmFjW2B0zLpK"], ["created_at", "2014-12-09 01:11:03.000559"], ["updated_at", "2014-12-09 01:11:03.000559"], ["activation_digest", "$2a$04$KUKNccNZeaiAAvzREUcq6.Xzk0WSL4/lEhkhwZa2RDMo/Acf6tIMi"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('USER@EXAMPLE.COM') LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------------------------
+UserTest: test_email_validation_shold_reject_invalid_addresses
+--------------------------------------------------------------
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example,com') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user_at_foo.org') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user.name@example.') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('foo@bar_baz.com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('foo@bar+baz.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(' ') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (1.2ms)[0m  [1mDELETE FROM "microposts"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "microposts" ("content", "user_id", "created_at", "updated_at", "id") VALUES ('MyText', NULL, '2014-12-09 01:12:11', '2014-12-09 01:12:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "microposts" ("content", "user_id", "created_at", "updated_at", "id") VALUES ('MyText', NULL, '2014-12-09 01:12:11', '2014-12-09 01:12:11', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM "users"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "admin", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Michael Example', 'michael@example.com', '$2a$04$bQY.wpEIaOGmDdMvzGru/ORY9W9kZ/Fz8pnhAUGzfePVB8T.uJjWm', 't', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 149617800)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Sterling Archer', 'duchess@example.gov', '$2a$04$5KO1rk2jyidw9AoqK0Woau4clykeJEewcvToGRm5Du0Dwr0tcQkaS', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 512127716)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Lana Kane', 'hands@example.gov', '$2a$04$5EiiE6QzBsxH9Fm2jHKiu.57Q7MUdoLaoQalRBbyyd.EUo/AtH3Im', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 409608538)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('Mallory Archer', 'boss@example.gov', '$2a$04$drCj.T3oRY4dhMQS5P54LeSbGss0Qowa8op0ObSVAT/0TJJsRr8Hq', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 785162917)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 0', 'user-0@example.com', '$2a$04$U4xdhWtokRlGDJIJgqN9UeUrp/yX.e7jIsOapRY/732HkcNymMi4W', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 338193910)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 1', 'user-1@example.com', '$2a$04$m/HbdSVb.LaQzUjWYlJo8O1XbomJ97G4c8zoGunR7Ak..4s/738pW', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 590306657)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 2', 'user-2@example.com', '$2a$04$FpUmxuLuVl698..JYLkNTeVl3M0N0iAK5WMgjnowUcuQn7CDVfDDC', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 975572189)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 3', 'user-3@example.com', '$2a$04$OKGOKw/6b3zBVRFT8UPGVulxdIdL2SqHKgN7/YFG44Fh7x5T.QDpC', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 220281934)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 4', 'user-4@example.com', '$2a$04$ecaTs12oZzYJJ9C6GSvUae9Vw15.nM9v0lfY.xELfh7FKvQ6HKR2e', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 323332591)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 5', 'user-5@example.com', '$2a$04$Pvk0kJxDpIaZwAASq3HKNuhNJIdhnJMHVDGIABJmTh1MVNIAIaLhC', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 608344442)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 6', 'user-6@example.com', '$2a$04$6X8OoKDHOGieWxjLL0GqV.FwgxiqIn12VGsZptg.bdIShhdnBqnW2', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 1028376774)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 7', 'user-7@example.com', '$2a$04$BbTbxN8LDODnSEoTT5N4AOcMpZImfDaEpELAAXnS86cBdY3SNBmt6', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 172816471)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 8', 'user-8@example.com', '$2a$04$l.UXcd8GCKHL8gxhXUZiNOANoI66Nc5HJl1wTOxj8oML2czO3zoke', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 452191684)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 9', 'user-9@example.com', '$2a$04$ObgU2ZWWQ/vcSFl/3jOrauT4n9wuRFv8OG.J3SKapc7l/WlYaRAEG', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 771020115)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 10', 'user-10@example.com', '$2a$04$YKgD1tlTcAmOT.3Af7IGueaw2eN0V0B4Xz4/EnMfYJ8zA4W6hSYyq', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 956993830)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 11', 'user-11@example.com', '$2a$04$8245Ao08s8aOiETqntx25eDTsLvi9hbC9aDdtp9m2Zg7ISSv3GzSC', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 235774389)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 12', 'user-12@example.com', '$2a$04$xKcrKKrjKyJNso6Lk0FnUORA.HLAd00/9ZlJnog7OQD64Vd71b/O2', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 386199561)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 13', 'user-13@example.com', '$2a$04$VFBlnwpP0zzu8ApzW1huXe5dJKiSHjCR9wHL8ue8uX45IdkQiImau', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 537116830)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 14', 'user-14@example.com', '$2a$04$EVrZKLBZULGiYcs/8OB4NOert.Jal91fq5l0Z9oJUkPt9ZdFROUh.', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 1046959423)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 15', 'user-15@example.com', '$2a$04$rCYzdHfmfLiu/1v3ym8t.uvlA1qm.cpprhveULctezrW9Zt.Yif62', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 157312430)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 16', 'user-16@example.com', '$2a$04$xviZ2a5ZRp9DgiyrDuhVJevRdyc/2FWlLVeEHoxxwH7yVZVtC0Uy2', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 275330066)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 17', 'user-17@example.com', '$2a$04$MmDkou9AG0AmK6ifKoT2l.LNS2teYlL/KFwvhy3yY6TNWEA7GhiN.', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 661521543)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 18', 'user-18@example.com', '$2a$04$D.YRMVTa2UXGD7v2SmixV..ZgY38F6bo2TBiW/cHfAcKwD8hDQJv2', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 936450328)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 19', 'user-19@example.com', '$2a$04$K1v5197tfWNl0.zJ7nfFzugm8./eAAcY8.dwJI6Tj0KDRpWmdkKxa', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 14035331)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 20', 'user-20@example.com', '$2a$04$h6eTIBPoYAtMqqfiqaMV0uLYMpfPuqTrRJ7A4w2uHqRmw8b23ezci', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 304595689)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 21', 'user-21@example.com', '$2a$04$hSUnL6.F7rYSpiFPyaa3OuOHAlEkkaO3RfsIaDm1Qqt.ByCKIbjlO', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 622916212)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 22', 'user-22@example.com', '$2a$04$Oi3LRepnmpKFOIuSmlC6be8Ld8BnQenL7iUsFE9M7EzbTVSZEPA.m', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 1009361868)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 23', 'user-23@example.com', '$2a$04$dx4hFgDrWxbrIQVcxtaOfeXx7QgyMdHBThKGeV80FsoSLD99ro2nW', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 187601757)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 24', 'user-24@example.com', '$2a$04$RbxF8ZXQV8BRRXF0jrJScu8KHG4z9aCfHAS8IZw94wmFYZky6T5gS', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 357172992)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 25', 'user-25@example.com', '$2a$04$0pLH4Rj8Cd41o9nwZ7sGZeKOhyhGwHBYTyvSwIOyFGkjw0qfwFm8S', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 575485547)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 26', 'user-26@example.com', '$2a$04$XqrZFA4PzfuMto./h.DAHugcYbWqP4ZJgXcjnxa0aAGSibQWMeMee', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 994338771)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 27', 'user-27@example.com', '$2a$04$NUTAwXw4YjV6PzGTyGfHTOBKniyKe/VD/cS2plVeFA4BTNsj/ZIHa', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 205739844)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 28', 'user-28@example.com', '$2a$04$VBNb3uD5kdKS/jjm4rloVePECFweVpGBIxvxKUbqxtJD2dYTw6dnm', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 486296279)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "activated", "activated_at", "created_at", "updated_at", "id") VALUES ('User 29', 'user-29@example.com', '$2a$04$H61BZJg37X9c.By7Rhyz4emO8Od9xxD80izdvelj6lo7E2UyXb5gy', 't', '2014-12-09 01:12:11.000000', '2014-12-09 01:12:11', '2014-12-09 01:12:11', 737901126)
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------
+UserTest: test_should_be_valid
+------------------------------
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------------------------
+UserTest: test_email_validation_should_accept_valid_addresses
+-------------------------------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('USER@foo.COM') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('A_US-ER@foo.bar.org') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('first.last@foo.jp') LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('alice+bob@baz.cn') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+------------------------------------------------------------
+UserTest: test_email_addresses_should_be_saved_as_lower-case
+------------------------------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('Foo@ExAMPle.CoM') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["email", "foo@example.com"], ["password_digest", "$2a$04$wMAesQ.nnZUxKlY.wacfSupUWUz/KASTVgJPIrGH/vwb.kFg1wAj2"], ["created_at", "2014-12-09 01:12:11.439941"], ["updated_at", "2014-12-09 01:12:11.439941"], ["activation_digest", "$2a$04$7Yw2.YR2NHwyYyrvSVyPROrk7O9OshzJULF1ARRguyjfdhF7XmyE."]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1046959424]]
+  [1m[35m (1.7ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-------------------------------------------
+UserTest: test_email_should_not_be_too_long
+-------------------------------------------
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------
+UserTest: test_email_should_be_present
+--------------------------------------
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(' ') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------
+UserTest: test_password_should_have_a_minimum_length
+----------------------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-------------------------------------
+UserTest: test_name_should_be_present
+-------------------------------------
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+----------------------------------------------------------------------------
+UserTest: test_authenticated?_should_return_false_for_a_user_with_nil_digest
+----------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+UserTest: test_name_should_not_be_too_long
+------------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------------
+UserTest: test_email_addresses_should_be_unique
+-----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "activation_digest") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Example User"], ["email", "user@example.com"], ["password_digest", "$2a$04$R/Jym57oG0LHMI4b5IkEUO.aKLwnzkyzKhrxkgnPcc9QRuNMdQjEC"], ["created_at", "2014-12-09 01:12:11.822867"], ["updated_at", "2014-12-09 01:12:11.822867"], ["activation_digest", "$2a$04$2I6nP/MCtXXOrqys9oA/YeBbnKq2chb2zc/LlBd1n6WbCL1Ok7jxO"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('USER@EXAMPLE.COM') LIMIT 1[0m
+  [1m[35m (1.9ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------------------
+UserTest: test_email_validation_shold_reject_invalid_addresses
+--------------------------------------------------------------
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user@example,com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user_at_foo.org') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('user.name@example.') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('foo@bar_baz.com') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER('foo@bar+baz.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

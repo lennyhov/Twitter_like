@@ -1,5 +1,8 @@
-Pour télécharger le bootstrap twitter :
+# Ruby on Rails Tutorial: sample application
 
--> mettre : "gem 'twitter-bootstrap-rails', '~> 3.2.0'" dans le gemfile,
--> puis faire "bundle install"
--> et enfin lancer le générateur "rails generate bootstrap:install static"
+This is the sample application for the
+[*Ruby on Rails Tutorial:
+Learn Web Development with Rails*](http://www.railstutorial.org/)
+by [Michael Hartl](http://www.michaelhartl.com/).
+
+App: https://gentle-cliffs-2926.herokuapp.com
